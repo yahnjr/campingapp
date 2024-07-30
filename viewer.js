@@ -1,9 +1,23 @@
+function getQueryParams() {
+    const params = {};
+    window.location.search.substring(1).split('&').forEach(param => {
+        const [key, value] = param.split('=');
+        params[key] = decodeURIComponent(value);
+    });
+    return params;
+}
+
 let camera, scene, renderer, controls;
 
 init();
 animate();
 
 function init() {
+    const params = getQueryParams();
+    const location = params['location'] || "susan";
+    const site = params['site'] || "22";
+    const imageUrl = `models/${location}/${site}/PHOTOSPHERE.JPG`;
+
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1100);
     camera.position.z = 0.01;
 
@@ -12,7 +26,7 @@ function init() {
     const geometry = new THREE.SphereGeometry(500, 60, 40);
     geometry.scale(-1, 1, 1);
 
-    const texture = new THREE.TextureLoader().load("models/susan22/susan22.PHOTOSPHERE.jpg");
+    const texture = new THREE.TextureLoader().load(imageUrl);
     const material = new THREE.MeshBasicMaterial({ map: texture });
 
     const mesh = new THREE.Mesh(geometry, material);
