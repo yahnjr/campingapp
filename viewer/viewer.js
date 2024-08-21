@@ -14,9 +14,9 @@ animate();
 
 function init() {
     const params = getQueryParams();
-    const location = params['location'] || "susan";
-    const site = params['site'] || "22";
-    const imageUrl = `models/${location}/${site}/PHOTOSPHERE.JPG`;
+    const location = params['location'] || "fort-stevens";
+    const site = params['site'] || "loopd128";
+    const imageUrl = `https://yahnjr.github.io/campingapp/photospheres/${location}/${site}.PHOTOSPHERE.jpg`;
 
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1100);
     camera.position.z = 0.01;
