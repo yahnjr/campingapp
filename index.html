@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
     <title>Campsite Photosphere Viewer</title>
-</head>
-<style>
-    body, html {
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body, html {
         margin: 0;
         padding: 0;
         height: 100%;
@@ -35,80 +34,125 @@
         width: 90%;
         height: 90%;
         margin: 5% auto;
-        display: block;
+        display: block !important;
+        visibility: visible !important;
         border: none;
+        background-color: white;
     }
-</style>
+
+    #modal-title {
+        color: white;
+        text-align: center;
+        font-size: 115;
+        margin-top: 10px;
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        color: #fff;
+        font-size: 35px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    </style>
+</head>
 <body>
-    <section id="section1">
-        <div id="map"></div>
-        <div id="photospher-modal" class="modal">
-            <span class="close">&times;</span>
-            <iframe id="photosphere-iframe" src="viewer/index.html"></iframe>
-        </div>
-    </section>
-
+    <div id="map"></div>
+    <div id="photosphere-modal" class="modal">
+        <span class="close">&times;</span>
+        <h2 id="modal-title"></h2>
+        <iframe id="photosphere-iframe" src=""></iframe>
+    </div>
     <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoiaWZvcm1haGVyIiwiYSI6ImNsaHBjcnAwNDF0OGkzbnBzZmUxM2Q2bXgifQ.fIyIgSwq1WWVk9CKlXRXiQ';
+        window.onload = function() {
+            mapboxgl.accessToken = 'pk.eyJ1IjoiaWZvcm1haGVyIiwiYSI6ImNsaHBjcnAwNDF0OGkzbnBzZmUxM2Q2bXgifQ.fIyIgSwq1WWVk9CKlXRXiQ';
+            var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [-123.96494, 46.18472],
+                zoom: 18.5
+            });
 
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [-123.96231001844252, 46.18068818586526],
-            zoom: 10,
-        });
-        
-        map.on('load', function() {
-            fetch('Camp_photospheres.geojson')
-                .then(response => response.json())
-                .then(data => {
-                    map.addSource('campsites', {
-                        type: 'geojson',
-                        data: data
-                    });
-                    
-                    map.addLayer({
-                        id:'campsites-layer',
-                        type: 'circle',
-                        source: 'campsites',
-                        paint: {
-                            'circle-radius': 6,
-                            'circle-color': "#007cbf"
-                        }
+            map.on('load', function() {
+                fetch('https://yahnjr.github.io/campingapp/Camp_photospheres.geojson')
+                    .then(response => response.json())
+                    .then(data => {
+                        map.addSource('campsites', {
+                            type: 'geojson',
+                            data: data
+                        });
+
+                        map.addLayer({
+                            id: 'campsites-layer',
+                            type: 'circle',
+                            source: 'campsites',
+                            paint: {
+                                'circle-radius': 20,
+                                'circle-color': '#007cbf'
+                            }
+                        });
+
+                        // Add this new layer for labels
+                        map.addLayer({
+                            id: 'campsites-labels',
+                            type: 'symbol',
+                            source: 'campsites',
+                            layout: {
+                                'text-field': ['get', 'Campsite'],
+                                'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+                                'text-size': 42,
+                                'text-offset': [0, 0.6],
+                                'text-anchor': 'top',
+                                'text-allow-overlap': true
+                            },
+                            paint: {
+                                'text-color': '#ffffff',
+                                'text-halo-color': '#000000',
+                                'text-halo-width': 2
+                            }
+                        });
+
+                        map.on('mouseenter', 'campsites-layer', function() {
+                            map.getCanvas().style.cursor = 'pointer';
+                        });
+
+                        map.on('mouseleave', 'campsites-layer', function() {
+                            map.getCanvas().style.cursor = '';
+                        });
+
+                        // Handle click event on the campsites-layer
+                        map.on('click', 'campsites-layer', function (e) {
+                            var site = e.features[0].properties.Campground;
+                            var sitenum = e.features[0].properties.Suffix;
+                            var campsite = e.features[0].properties.Campsite;
+                            var iframeSrc = `https://yahnjr.github.io/campingapp/viewer/?location=${site}&site=${sitenum}`;
+                            
+                            console.log("Loading iframe with source:", iframeSrc);
+                            // Set the iframe source and display the modal
+                            document.getElementById("photosphere-iframe").src = iframeSrc;
+                            document.getElementById("modal-title").textContent = `Campsite #: ${campsite}`;
+                            document.getElementById("photosphere-modal").style.display = "block";
+                        });
                     })
+                    .catch(error => console.error('Error loading GeoJSON:', error));
             });
 
-            map.on('click', 'campsites-layer', function (e) {
-                var site = e.features[0].properties.Campground;
-                var sitenum = e.features[0].properties.Suffix;
-                var iframeSrc = `https://yahnjr.github.io/campingapp/?location=${site}&site=${sitenum}`;
+            var photosphereModal = document.getElementById("photosphere-modal");
+            var photosphereClose = document.getElementsByClassName("close")[0];
 
-                document.getElementById("photosphere-iframe").src = iframeSrc;
-                document.getElementById("photosphere-modal").style.display = "block";
-            });
-
-            map.on('mouseenter', 'campsites-layer', function() {
-                map.getCanvas().style.cursor = 'pointer';
-            });
-
-            map.on('mouseleave', 'campsites-layer', function() {
-                map.getCanvas().style.cursor = '';
-            });
-        });
-
-        var photosphereModal = document.getElementById("photosphere-modal");
-        var photosphereClose = document.getElementsByClassName("close")[0];
-
-        photosphereClose.onclick = function() {
-            photosphereModal.style.display = "none";
-            document.getElementById("photosphere-iframe").src = "";
-        }
-        
-        window.onclick = function(event) {
-            if (event.target === photosphereModal) {
+            photosphereClose.onclick = function() {
                 photosphereModal.style.display = "none";
                 document.getElementById("photosphere-iframe").src = "";
             }
+            
+            window.onclick = function(event) {
+                if (event.target === photosphereModal) {
+                    photosphereModal.style.display = "none";
+                    document.getElementById("photosphere-iframe").src = "";
+                }
+            };
         };
     </script>
 </body>
