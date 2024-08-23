@@ -3,6 +3,12 @@ var campgrounds = [
     {name: "oxbow", displayName: "Oxbow Regional Park Campground", coordinates: [-122.291, 45.494], zoom: 14.5, maxZoom: 13, imagePath: 'resources/maps/oxbow.png', imageCoordinates: [ [-122.2964835, 45.4975914], [-122.2793346, 45.4978541], [-122.2791087, 45.4901197], [-122.2962915, 45.4898215] ]},
 ]
 
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach(button => {
+  button.style.backgroundImage = `url(${button.dataset.icon})`;
+});
+
 let map;
 
         function initializeMap() {
@@ -194,7 +200,7 @@ let map;
                 map.setStyle(newStyle);
                 isStreets = !isStreets;
 
-                this.style.backgroundImage = `url(${isStreets ? 'https://yahnjr.github.io/campingapp/resources/icons/freepik-motorway.png' : 'https://yahnjr.github.io/campingapp/resources/icons/freepik-satellite.png'})`;
+                this.style.backgroundImage = `url(${isStreets ? 'https://yahnjr.github.io/campingapp/resources/icons/freepik-satellite.png' : 'https://yahnjr.github.io/campingapp/resources/icons/freepik-motorway.png'})`;
                 this.title = isStreets ? 'Switch to Satellite' : 'Switch to Streets';
             });
         }
