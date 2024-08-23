@@ -1,0 +1,32 @@
+[
+    {
+        "name": "fort-stevens",
+        "displayName": "Fort Stevens Campground",
+        "coordinates": [-123.96550, 46.18429],
+        "zoom": 16,
+        "rotation": 275,
+        "maxZoom": 13,
+        "imagePath": "resources/maps/fortstevens-north.png",
+        "imageCoordinates": [
+            [-123.9671144, 46.1801986],
+            [-123.9704463, 46.1875700],     
+            [-123.9635969, 46.1890756],
+            [-123.9602373, 46.1816984]
+        ]
+    },
+    {
+        "name": "oxbow",
+        "displayName": "Oxbow Regional Park Campground",
+        "coordinates": [-122.291, 45.494],
+        "zoom": 14.5,
+        "rotation": 0,
+        "maxZoom": 13,
+        "imagePath": "resources/maps/oxbow.png",
+        "imageCoordinates": [
+            [-122.2964835, 45.4975914],
+            [-122.2793346, 45.4978541],
+            [-122.2791087, 45.4901197],
+            [-122.2962915, 45.4898215]
+        ]
+    }
+]

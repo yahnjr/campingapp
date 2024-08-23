@@ -1,8 +1,3 @@
-var campgrounds = [
-    {name: "fort-stevens", displayName: "Fort Stevens Campground", coordinates: [-123.96550, 46.18429], zoom: 16, maxZoom: 13, imagePath: 'resources/maps/fortstevens-north.png', imageCoordinates: [ [-123.9654155, 46.1805224], [-123.9691354, 46.1877911], [-123.9651667, 46.1887882], [-123.9614539, 46.1814736],]},
-    {name: "oxbow", displayName: "Oxbow Regional Park Campground", coordinates: [-122.291, 45.494], zoom: 14.5, maxZoom: 13, imagePath: 'resources/maps/oxbow.png', imageCoordinates: [ [-122.2964835, 45.4975914], [-122.2793346, 45.4978541], [-122.2791087, 45.4901197], [-122.2962915, 45.4898215] ]},
-]
-
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach(button => {
@@ -10,6 +5,8 @@ buttons.forEach(button => {
 });
 
 let map;
+
+let campgrounds = [];
 
         function initializeMap() {
             mapboxgl.accessToken = 'pk.eyJ1IjoiaWZvcm1haGVyIiwiYSI6ImNsaHBjcnAwNDF0OGkzbnBzZmUxM2Q2bXgifQ.fIyIgSwq1WWVk9CKlXRXiQ';
@@ -20,12 +17,18 @@ let map;
                 zoom: 6
             });
 
-            map.on('load', function() {
-                addCampsites();
-                addClickEvents();
-                setupBasemapToggle();
-                setupBookmarks();
-            });
+            fetch('resources/campgrounds.json')
+                .then(response => response.json())
+                .then(data => {
+                    campgrounds = data;
+                    map.on('load', function() {
+                        addCampsites();
+                        addClickEvents();
+                        setupBasemapToggle();
+                        setupBookmarks();
+                    });
+                })
+                .catch(error => console.error('Error loading campgrounds data:', error));
         }
 
         function addCampsites() {
@@ -52,6 +55,7 @@ let map;
                             map.flyTo({
                                 center: campground.coordinates,
                                 zoom: campground.zoom,
+                                bearing: campground.rotation,
                                 essential: true
                             });
                         });
@@ -240,20 +244,3 @@ let map;
                 }
             };
         };
-        
-       
-
-                        // map.addSource('oxbow-map', {
-                        //     'type': 'raster',
-                        //     'tiles': [
-                        //         'maps/oxbow.tif'
-                        //     ],
-                        //     'tileSize': 256
-                        // });
-
-                        // map.addLayer({
-                        //     'id': 'oxbow-map',
-                        //     'type': 'raster',
-                        //     'source': 'oxbow-map',
-                        //     'paint': {}
-                        // }); 
