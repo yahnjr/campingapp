@@ -1,0 +1,93 @@
+<PAMDataset>
+  <Subdataset name="Page 1">
+    <PAMDataset>
+      <Metadata domain="xml:ESRI" format="xml">
+        <GeodataXform xsi:type="typens:CompositeXform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:typens="http://www.esri.com/schemas/ArcGIS/3.3.0">
+          <XF_0 xsi:type="typens:PolynomialXform">
+            <PolynomialOrder>1</PolynomialOrder>
+            <SpatialReference xsi:type="typens:ProjectedCoordinateSystem">
+              <WKT>PROJCS["NAD_1983_2011_Oregon_Statewide_Lambert_Ft_Intl",GEOGCS["GCS_NAD_1983_2011",DATUM["D_NAD_1983_2011",SPHEROID["GRS_1980",6378137.0,298.257222101]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]],PROJECTION["Lambert_Conformal_Conic"],PARAMETER["False_Easting",1312335.958005249],PARAMETER["False_Northing",0.0],PARAMETER["Central_Meridian",-120.5],PARAMETER["Standard_Parallel_1",43.0],PARAMETER["Standard_Parallel_2",45.5],PARAMETER["Latitude_Of_Origin",41.75],UNIT["Foot",0.3048],AUTHORITY["EPSG",6557]],VERTCS["NAVD88_height_(ftUS)",VDATUM["North_American_Vertical_Datum_1988"],PARAMETER["Vertical_Shift",0.0],PARAMETER["Direction",1.0],UNIT["Foot_US",0.3048006096012192],AUTHORITY["EPSG",6360]]</WKT>
+              <XOrigin>-118489100</XOrigin>
+              <YOrigin>-97381100</YOrigin>
+              <XYScale>3048</XYScale>
+              <ZOrigin>-100000</ZOrigin>
+              <ZScale>3048.0060960121918</ZScale>
+              <MOrigin>-100000</MOrigin>
+              <MScale>10000</MScale>
+              <XYTolerance>0.0032808398950131233</XYTolerance>
+              <ZTolerance>0.001</ZTolerance>
+              <MTolerance>0.001</MTolerance>
+              <HighPrecision>true</HighPrecision>
+              <WKID>102970</WKID>
+              <LatestWKID>6557</LatestWKID>
+              <VCSWKID>105703</VCSWKID>
+              <LatestVCSWKID>6360</LatestVCSWKID>
+            </SpatialReference>
+            <CoeffX xsi:type="typens:ArrayOfDouble">
+              <Double>851763.12177331257</Double>
+              <Double>3.3291661150035043</Double>
+              <Double>-0.037596459295923118</Double>
+            </CoeffX>
+            <CoeffY xsi:type="typens:ArrayOfDouble">
+              <Double>1371033.0241861925</Double>
+              <Double>0.037596459295923118</Double>
+              <Double>3.3291661150035043</Double>
+            </CoeffY>
+            <InverseCoeffX xsi:type="typens:ArrayOfDouble">
+              <Double>-260466.33180638542</Double>
+              <Double>0.30033721617049802</Double>
+              <Double>0.0033917249944114087</Double>
+            </InverseCoeffX>
+            <InverseCoeffY xsi:type="typens:ArrayOfDouble">
+              <Double>-408883.29549246375</Double>
+              <Double>-0.003391724994411433</Double>
+              <Double>0.30033721617049802</Double>
+            </InverseCoeffY>
+            <Name />
+          </XF_0>
+          <XF_1 xsi:type="typens:CoordinateXform">
+            <Approximation>true</Approximation>
+            <RecalculateTolerance>true</RecalculateTolerance>
+            <Tolerance>0</Tolerance>
+            <GridSize>32</GridSize>
+            <SpatialReference xsi:type="typens:ProjectedCoordinateSystem">
+              <WKT>PROJCS["NAD_1983_2011_Oregon_Statewide_Lambert_Ft_Intl",GEOGCS["GCS_NAD_1983_2011",DATUM["D_NAD_1983_2011",SPHEROID["GRS_1980",6378137.0,298.257222101]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]],PROJECTION["Lambert_Conformal_Conic"],PARAMETER["False_Easting",1312335.958005249],PARAMETER["False_Northing",0.0],PARAMETER["Central_Meridian",-120.5],PARAMETER["Standard_Parallel_1",43.0],PARAMETER["Standard_Parallel_2",45.5],PARAMETER["Latitude_Of_Origin",41.75],UNIT["Foot",0.3048],AUTHORITY["EPSG",6557]],VERTCS["NAVD88_height_(ftUS)",VDATUM["North_American_Vertical_Datum_1988"],PARAMETER["Vertical_Shift",0.0],PARAMETER["Direction",1.0],UNIT["Meter",1.0]]</WKT>
+              <XOrigin>-118489100</XOrigin>
+              <YOrigin>-97381100</YOrigin>
+              <XYScale>37592196.316242374</XYScale>
+              <ZOrigin>-100000</ZOrigin>
+              <ZScale>3048.0060960121918</ZScale>
+              <MOrigin>-100000</MOrigin>
+              <MScale>10000</MScale>
+              <XYTolerance>0.0032808398950131233</XYTolerance>
+              <ZTolerance>0.001</ZTolerance>
+              <MTolerance>0.001</MTolerance>
+              <HighPrecision>true</HighPrecision>
+              <WKID>102970</WKID>
+              <LatestWKID>6557</LatestWKID>
+            </SpatialReference>
+            <InputSpatialReference xsi:type="typens:ProjectedCoordinateSystem">
+              <WKT>PROJCS["NAD_1983_2011_Oregon_Statewide_Lambert_Ft_Intl",GEOGCS["GCS_NAD_1983_2011",DATUM["D_NAD_1983_2011",SPHEROID["GRS_1980",6378137.0,298.257222101]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]],PROJECTION["Lambert_Conformal_Conic"],PARAMETER["False_Easting",1312335.958005249],PARAMETER["False_Northing",0.0],PARAMETER["Central_Meridian",-120.5],PARAMETER["Standard_Parallel_1",43.0],PARAMETER["Standard_Parallel_2",45.5],PARAMETER["Latitude_Of_Origin",41.75],UNIT["Foot",0.3048],AUTHORITY["EPSG",6557]],VERTCS["NAVD88_height_(ftUS)",VDATUM["North_American_Vertical_Datum_1988"],PARAMETER["Vertical_Shift",0.0],PARAMETER["Direction",1.0],UNIT["Foot_US",0.3048006096012192],AUTHORITY["EPSG",6360]]</WKT>
+              <XOrigin>-118489100</XOrigin>
+              <YOrigin>-97381100</YOrigin>
+              <XYScale>3048</XYScale>
+              <ZOrigin>-100000</ZOrigin>
+              <ZScale>3048.0060960121918</ZScale>
+              <MOrigin>-100000</MOrigin>
+              <MScale>10000</MScale>
+              <XYTolerance>0.0032808398950131233</XYTolerance>
+              <ZTolerance>0.001</ZTolerance>
+              <MTolerance>0.001</MTolerance>
+              <HighPrecision>true</HighPrecision>
+              <WKID>102970</WKID>
+              <LatestWKID>6557</LatestWKID>
+              <VCSWKID>105703</VCSWKID>
+              <LatestVCSWKID>6360</LatestVCSWKID>
+            </InputSpatialReference>
+          </XF_1>
+          <RequireDEM>false</RequireDEM>
+        </GeodataXform>
+      </Metadata>
+    </PAMDataset>
+  </Subdataset>
+</PAMDataset>
