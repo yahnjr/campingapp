@@ -1,3 +1,8 @@
+var campgrounds = [
+    {name: "fort-stevens", displayName: "Fort Stevens Campground", coordinates: [-123.96550, 46.18429], zoom: 16, maxZoom: 13, imagePath: 'resources/maps/fortstevens-north.png', imageCoordinates: [ [-123.9654155, 46.1805224], [-123.9691354, 46.1877911], [-123.9651667, 46.1887882], [-123.9614539, 46.1814736],]},
+    {name: "oxbow", displayName: "Oxbow Regional Park Campground", coordinates: [-122.291, 45.494], zoom: 14.5, maxZoom: 13, imagePath: 'resources/maps/oxbow.png', imageCoordinates: [ [-122.2964835, 45.4975914], [-122.2793346, 45.4978541], [-122.2791087, 45.4901197], [-122.2962915, 45.4898215] ]},
+]
+
 let map;
 
         function initializeMap() {
@@ -18,9 +23,75 @@ let map;
         }
 
         function addCampsites() {
-            fetch('https://yahnjr.github.io/campingapp/Camp_photospheres.geojson')
+            fetch('https://yahnjr.github.io/campingapp/resources/Camp_photospheres.geojson')
                 .then(response => response.json())
                 .then(data => {
+                    campgrounds.forEach(function(campground,index) {
+                        var marker = new mapboxgl.Marker()
+                            .setLngLat(campground.coordinates)
+                            .addTo(map);
+                        
+                        var popup = new mapboxgl.Popup({ offset: 25 }).setText(campground.displayName);
+
+                        marker.getElement().addEventListener('mouseenter', function() {
+                            popup.addTo(map);
+                            marker.togglePopup();
+                        });
+
+                        marker.getElement().addEventListener('mouseleave', function() {
+                            popup.remove();
+                        });
+                        
+                        marker.getElement().addEventListener('click', function() {
+                            map.flyTo({
+                                center: campground.coordinates,
+                                zoom: campground.zoom,
+                                essential: true
+                            });
+                        });
+
+                        map.on('zoom', function() {
+                            var zoom = map.getZoom();
+                            console.log(zoom);
+                            if (zoom > campground.maxZoom) {
+                                marker.getElement().style.display = 'none';
+                            } else {
+                                marker.getElement().style.display = 'block';
+                            }
+                        });
+
+                        map.addSource(campground.name + '-image', {
+                            'type': 'image',
+                            'url': campground.imagePath,
+                            'coordinates': campground.imageCoordinates
+                        });
+
+                        map.addLayer({
+                            'id': campground.name + '-image',
+                            'type': 'raster',
+                            'source': campground.name + '-image',
+                            'paint': {
+                                'raster-opacity': 0.7
+                            }
+                        });
+
+                        map.setLayoutProperty(campground.name + '-image', 'visibility', 'none');
+                    });
+
+                    var mapToggle = document.getElementById('map-toggle');
+                    mapToggle.addEventListener('click', function() {
+                        campgrounds.forEach(function(campground) {
+                            var campImage = campground.name + '-image'
+                            var visibility = map.getLayoutProperty(campImage, 'visibility');
+
+                            if (visibility === 'visible') {
+                                map.setLayoutProperty(campImage, 'visibility', 'none');
+                            } else {
+                                map.setLayoutProperty(campImage, 'visibility', 'visible');
+                            }
+                        })
+                    })
+
                     if (map.getSource('campsites')) {
                         map.removeSource('campsites');
                     }
@@ -39,7 +110,8 @@ let map;
                         paint: {
                             'circle-radius': 10,
                             'circle-color': '#007cbf'
-                        }
+                        },
+                        minzoom: 13
                     });
 
                     if (map.getLayer('campsites-labels')) {
@@ -62,23 +134,8 @@ let map;
                             'text-halo-color': '#000000',
                             'text-halo-width': 2
                         },
-                        minzoom: 15
-                    });
-
-                    // map.addSource('fort-stevens-map', {
-                    //     'type': 'raster',
-                    //     'tiles': [
-                    //         'maps/fortstevens-north.png'
-                    //     ],
-                    //     'tileSize': 256
-                    // });
-
-                    // map.addLayer({
-                    //     'id': 'fort-stevens-map',
-                    //     'type': 'raster',
-                    //     'source': 'fort-stevens-map',
-                    //     'paint': {}
-                    // });
+                        minzoom: 13
+                    });                    
                 })
                 .catch(error => console.error('Error loading GeoJSON:', error));
         }
@@ -137,7 +194,8 @@ let map;
                 map.setStyle(newStyle);
                 isStreets = !isStreets;
 
-                this.textContent = isStreets ? 'Switch to Satellite' : 'Switch to Streets';
+                this.style.backgroundImage = `url(${isStreets ? 'https://yahnjr.github.io/campingapp/resources/icons/freepik-motorway.png' : 'https://yahnjr.github.io/campingapp/resources/icons/freepik-satellite.png'})`;
+                this.title = isStreets ? 'Switch to Satellite' : 'Switch to Streets';
             });
         }
 

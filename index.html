@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campsite Photosphere Viewer</title>
+    <title>Campview3D</title>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="style.css">
@@ -11,14 +11,14 @@
 <body>
     <div id="map"></div>
     <div id="controls">
-        <button id="basemapToggle">Switch to Satellite</button>
+        <button id="basemapToggle" title="Switch to Satellite" data-icon="https://yahnjr.github.io/campingapp/resources/icons/freepik-satellite.png"></button>
+        <button id="map-toggle" title="Toggle Campground Map" data-icon="https://yahnjr.github.io/campingapp/resources/icons/camp-map.png"></button>
         <div id="bookmark-dropdown" class="dropdown">
-            <button id="bookmarkButton">Campsites</button>
+            <button id="bookmarkButton" title="Campgrounds" data-icon="https://yahnjr.github.io/campingapp/resources/icons/goodware-tent.png"></button>
                 <div id="dropdownContent" class="dropdown-content">
-                    <a href="#" data-lat="46.18429" data-lng="-123.96550" data-zoom="16" data-rotation="270">Fort Stevens Campground</a>
-                    <a href="#" data-lat="45.494" data-lng="-122.291" data-zoom="16" data-rotation="0">Oxbow Regional Park Campground</a>
+                    <a href="#" data-lat="46.18429" data-lng="-123.96550" data-zoom="15.95" data-rotation="270">Fort Stevens Campground</a>
+                    <a href="#" data-lat="45.494" data-lng="-122.291" data-zoom="14.5" data-rotation="0">Oxbow Regional Park Campground</a>
                 </div>
-            </div>
         </div>
     </div>
     <div id="photosphere-modal" class="modal">
