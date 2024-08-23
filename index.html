@@ -4,156 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campsite Photosphere Viewer</title>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
-    <style>
-        body, html {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        width: 100%;
-    }
-
-    #map {
-        width: 100%;
-        height: 100%;
-    }
-
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.5);
-    }
-
-    .modal iframe {
-        width: 90%;
-        height: 90%;
-        margin: 5% auto;
-        display: block !important;
-        visibility: visible !important;
-        border: none;
-        background-color: white;
-    }
-
-    #modal-title {
-        color: white;
-        text-align: center;
-        font-size: 115;
-        margin-top: 10px;
-    }
-
-    .close {
-        position: absolute;
-        top: 10px;
-        right: 25px;
-        color: #fff;
-        font-size: 35px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-    </style>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="map"></div>
+    <div id="controls">
+        <button id="basemapToggle">Switch to Satellite</button>
+        <div id="controls"><div id="bookmarkDropdown" class="dropdown">
+            <button id="bookmarkButton">Campsites</button>
+            <div id="dropdownContent" class="dropdown-content">
+                <a href="#" data-lat="46.18429" data-lng="-123.96550" data-zoom="18" data-rotation="270">Fort Stevens Campground</a>
+                <a href="#" data-lat="45.494" data-lng="-122.291" data-zoom="18" data-rotation="0">Oxbow Regional Park Campground</a>
+            </div>
+        </div>
+    </div>
     <div id="photosphere-modal" class="modal">
         <span class="close">&times;</span>
         <h2 id="modal-title"></h2>
         <iframe id="photosphere-iframe" src=""></iframe>
     </div>
-    <script>
-        window.onload = function() {
-            mapboxgl.accessToken = 'pk.eyJ1IjoiaWZvcm1haGVyIiwiYSI6ImNsaHBjcnAwNDF0OGkzbnBzZmUxM2Q2bXgifQ.fIyIgSwq1WWVk9CKlXRXiQ';
-            var map = new mapboxgl.Map({
-                container: 'map',
-                style: 'mapbox://styles/mapbox/streets-v11',
-                center: [-123.96494, 46.18472],
-                zoom: 18.5
-            });
-
-            map.on('load', function() {
-                fetch('https://yahnjr.github.io/campingapp/Camp_photospheres.geojson')
-                    .then(response => response.json())
-                    .then(data => {
-                        map.addSource('campsites', {
-                            type: 'geojson',
-                            data: data
-                        });
-
-                        map.addLayer({
-                            id: 'campsites-layer',
-                            type: 'circle',
-                            source: 'campsites',
-                            paint: {
-                                'circle-radius': 20,
-                                'circle-color': '#007cbf'
-                            }
-                        });
-
-                        // Add this new layer for labels
-                        map.addLayer({
-                            id: 'campsites-labels',
-                            type: 'symbol',
-                            source: 'campsites',
-                            layout: {
-                                'text-field': ['get', 'Campsite'],
-                                'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
-                                'text-size': 42,
-                                'text-offset': [0, 0.6],
-                                'text-anchor': 'top',
-                                'text-allow-overlap': true
-                            },
-                            paint: {
-                                'text-color': '#ffffff',
-                                'text-halo-color': '#000000',
-                                'text-halo-width': 2
-                            }
-                        });
-
-                        map.on('mouseenter', 'campsites-layer', function() {
-                            map.getCanvas().style.cursor = 'pointer';
-                        });
-
-                        map.on('mouseleave', 'campsites-layer', function() {
-                            map.getCanvas().style.cursor = '';
-                        });
-
-                        // Handle click event on the campsites-layer
-                        map.on('click', 'campsites-layer', function (e) {
-                            var site = e.features[0].properties.Campground;
-                            var sitenum = e.features[0].properties.Suffix;
-                            var campsite = e.features[0].properties.Campsite;
-                            var iframeSrc = `https://yahnjr.github.io/campingapp/viewer/?location=${site}&site=${sitenum}`;
-                            
-                            console.log("Loading iframe with source:", iframeSrc);
-                            // Set the iframe source and display the modal
-                            document.getElementById("photosphere-iframe").src = iframeSrc;
-                            document.getElementById("modal-title").textContent = `Campsite #: ${campsite}`;
-                            document.getElementById("photosphere-modal").style.display = "block";
-                        });
-                    })
-                    .catch(error => console.error('Error loading GeoJSON:', error));
-            });
-
-            var photosphereModal = document.getElementById("photosphere-modal");
-            var photosphereClose = document.getElementsByClassName("close")[0];
-
-            photosphereClose.onclick = function() {
-                photosphereModal.style.display = "none";
-                document.getElementById("photosphere-iframe").src = "";
-            }
-            
-            window.onclick = function(event) {
-                if (event.target === photosphereModal) {
-                    photosphereModal.style.display = "none";
-                    document.getElementById("photosphere-iframe").src = "";
-                }
-            };
-        };
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
