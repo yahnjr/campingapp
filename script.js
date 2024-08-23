@@ -37,7 +37,7 @@ let map;
                         type: 'circle',
                         source: 'campsites',
                         paint: {
-                            'circle-radius': 20,
+                            'circle-radius': 10,
                             'circle-color': '#007cbf'
                         }
                     });
@@ -52,7 +52,7 @@ let map;
                         layout: {
                             'text-field': ['get', 'Campsite'],
                             'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
-                            'text-size': 42,
+                            'text-size': 16,
                             'text-offset': [0, 0.6],
                             'text-anchor': 'top',
                             'text-allow-overlap': true
