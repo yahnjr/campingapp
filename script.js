@@ -32,7 +32,7 @@ let campgrounds = [];
         }
 
         function addCampsites() {
-            fetch('https://yahnjr.github.io/campingapp/resources/Camp_photospheres.geojson')
+            fetch('resources/Camp_photospheres.geojson')
                 .then(response => response.json())
                 .then(data => {
                     campgrounds.forEach(function(campground,index) {

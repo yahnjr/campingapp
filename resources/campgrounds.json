@@ -23,10 +23,25 @@
         "maxZoom": 13,
         "imagePath": "resources/maps/oxbow.png",
         "imageCoordinates": [
+            [-120.7240074, 44.1320728],
+            [-120.7191715, 44.1319259],
+            [-120.7245847, 44.1268808],
+            [-120.7197444, 44.1267288]
+        ]
+    },
+    {
+        "name": "prineville",
+        "displayName": "Prineville Reservoir State Park",
+        "coordinates": [-120.722, 44.129],
+        "zoom": 15,
+        "rotation": 90,
+        "maxZoom": 13,
+        "imagePath": "resources/maps/prineville.png",
+        "imageCoordinates": [
             [-122.2964835, 45.4975914],
-            [-122.2793346, 45.4978541],
-            [-122.2791087, 45.4901197],
-            [-122.2962915, 45.4898215]
+            [-122.2793346, 45.4978541], 
+            [-122.2791087, 45.4901197], 
+            [-122.2962915, 45.4898215] 
         ]
     }
 ]
