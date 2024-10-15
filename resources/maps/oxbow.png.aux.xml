@@ -2,79 +2,91 @@
   <Metadata domain="IMAGE_STRUCTURE">
     <MDI key="INTERLEAVE">PIXEL</MDI>
   </Metadata>
-  <Metadata domain="Esri">
-    <MDI key="PyramidResamplingType">NEAREST</MDI>
+  <Metadata domain="xml:ESRI" format="xml">
+    <GeodataXform xsi:type="typens:CompositeXform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:typens="http://www.esri.com/schemas/ArcGIS/3.3.0">
+      <XF_0 xsi:type="typens:PolynomialXform">
+        <PolynomialOrder>1</PolynomialOrder>
+        <SpatialReference xsi:type="typens:ProjectedCoordinateSystem">
+          <WKT>PROJCS["NAD_1983_2011_Oregon_Statewide_Lambert_Ft_Intl",GEOGCS["GCS_NAD_1983_2011",DATUM["D_NAD_1983_2011",SPHEROID["GRS_1980",6378137.0,298.257222101]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]],PROJECTION["Lambert_Conformal_Conic"],PARAMETER["False_Easting",1312335.958005249],PARAMETER["False_Northing",0.0],PARAMETER["Central_Meridian",-120.5],PARAMETER["Standard_Parallel_1",43.0],PARAMETER["Standard_Parallel_2",45.5],PARAMETER["Latitude_Of_Origin",41.75],UNIT["Foot",0.3048],AUTHORITY["EPSG",6557]],VERTCS["NAVD88_height_(ftUS)",VDATUM["North_American_Vertical_Datum_1988"],PARAMETER["Vertical_Shift",0.0],PARAMETER["Direction",1.0],UNIT["Foot_US",0.3048006096012192],AUTHORITY["EPSG",6360]]</WKT>
+          <XOrigin>-118489100</XOrigin>
+          <YOrigin>-97381100</YOrigin>
+          <XYScale>3048</XYScale>
+          <ZOrigin>-100000</ZOrigin>
+          <ZScale>3048.0060960121918</ZScale>
+          <MOrigin>-100000</MOrigin>
+          <MScale>10000</MScale>
+          <XYTolerance>0.0032808398950131233</XYTolerance>
+          <ZTolerance>0.001</ZTolerance>
+          <MTolerance>0.001</MTolerance>
+          <HighPrecision>true</HighPrecision>
+          <WKID>102970</WKID>
+          <LatestWKID>6557</LatestWKID>
+          <VCSWKID>105703</VCSWKID>
+          <LatestVCSWKID>6360</LatestVCSWKID>
+        </SpatialReference>
+        <CoeffX xsi:type="typens:ArrayOfDouble">
+          <Double>852205.30851082737</Double>
+          <Double>1.2238134346017127</Double>
+          <Double>-0.028373170461284115</Double>
+        </CoeffX>
+        <CoeffY xsi:type="typens:ArrayOfDouble">
+          <Double>1371161.3158399274</Double>
+          <Double>0.028373170461284115</Double>
+          <Double>1.2238134346017127</Double>
+        </CoeffY>
+        <InverseCoeffX xsi:type="typens:ArrayOfDouble">
+          <Double>-721939.88203821843</Double>
+          <Double>0.81667903950449738</Double>
+          <Double>0.018934073564538006</Double>
+        </InverseCoeffX>
+        <InverseCoeffY xsi:type="typens:ArrayOfDouble">
+          <Double>-1103662.9884224408</Double>
+          <Double>-0.01893407356453812</Double>
+          <Double>0.81667903950449738</Double>
+        </InverseCoeffY>
+        <Name />
+      </XF_0>
+      <XF_1 xsi:type="typens:CoordinateXform">
+        <Approximation>true</Approximation>
+        <RecalculateTolerance>true</RecalculateTolerance>
+        <Tolerance>0</Tolerance>
+        <GridSize>32</GridSize>
+        <SpatialReference xsi:type="typens:ProjectedCoordinateSystem">
+          <WKT>PROJCS["NAD_1983_2011_Oregon_Statewide_Lambert_Ft_Intl",GEOGCS["GCS_NAD_1983_2011",DATUM["D_NAD_1983_2011",SPHEROID["GRS_1980",6378137.0,298.257222101]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]],PROJECTION["Lambert_Conformal_Conic"],PARAMETER["False_Easting",1312335.958005249],PARAMETER["False_Northing",0.0],PARAMETER["Central_Meridian",-120.5],PARAMETER["Standard_Parallel_1",43.0],PARAMETER["Standard_Parallel_2",45.5],PARAMETER["Latitude_Of_Origin",41.75],UNIT["Foot",0.3048],AUTHORITY["EPSG",6557]],VERTCS["NAVD88_height_(ftUS)",VDATUM["North_American_Vertical_Datum_1988"],PARAMETER["Vertical_Shift",0.0],PARAMETER["Direction",1.0],UNIT["Meter",1.0]]</WKT>
+          <XOrigin>-118489100</XOrigin>
+          <YOrigin>-97381100</YOrigin>
+          <XYScale>37592196.316242374</XYScale>
+          <ZOrigin>-100000</ZOrigin>
+          <ZScale>3048.0060960121918</ZScale>
+          <MOrigin>-100000</MOrigin>
+          <MScale>10000</MScale>
+          <XYTolerance>0.0032808398950131233</XYTolerance>
+          <ZTolerance>0.001</ZTolerance>
+          <MTolerance>0.001</MTolerance>
+          <HighPrecision>true</HighPrecision>
+          <WKID>102970</WKID>
+          <LatestWKID>6557</LatestWKID>
+        </SpatialReference>
+        <InputSpatialReference xsi:type="typens:ProjectedCoordinateSystem">
+          <WKT>PROJCS["NAD_1983_2011_Oregon_Statewide_Lambert_Ft_Intl",GEOGCS["GCS_NAD_1983_2011",DATUM["D_NAD_1983_2011",SPHEROID["GRS_1980",6378137.0,298.257222101]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]],PROJECTION["Lambert_Conformal_Conic"],PARAMETER["False_Easting",1312335.958005249],PARAMETER["False_Northing",0.0],PARAMETER["Central_Meridian",-120.5],PARAMETER["Standard_Parallel_1",43.0],PARAMETER["Standard_Parallel_2",45.5],PARAMETER["Latitude_Of_Origin",41.75],UNIT["Foot",0.3048],AUTHORITY["EPSG",6557]],VERTCS["NAVD88_height_(ftUS)",VDATUM["North_American_Vertical_Datum_1988"],PARAMETER["Vertical_Shift",0.0],PARAMETER["Direction",1.0],UNIT["Foot_US",0.3048006096012192],AUTHORITY["EPSG",6360]]</WKT>
+          <XOrigin>-118489100</XOrigin>
+          <YOrigin>-97381100</YOrigin>
+          <XYScale>3048</XYScale>
+          <ZOrigin>-100000</ZOrigin>
+          <ZScale>3048.0060960121918</ZScale>
+          <MOrigin>-100000</MOrigin>
+          <MScale>10000</MScale>
+          <XYTolerance>0.0032808398950131233</XYTolerance>
+          <ZTolerance>0.001</ZTolerance>
+          <MTolerance>0.001</MTolerance>
+          <HighPrecision>true</HighPrecision>
+          <WKID>102970</WKID>
+          <LatestWKID>6557</LatestWKID>
+          <VCSWKID>105703</VCSWKID>
+          <LatestVCSWKID>6360</LatestVCSWKID>
+        </InputSpatialReference>
+      </XF_1>
+      <RequireDEM>false</RequireDEM>
+    </GeodataXform>
   </Metadata>
-  <PAMRasterBand band="1">
-    <Histograms>
-      <HistItem>
-        <HistMin>-0.5</HistMin>
-        <HistMax>255.5</HistMax>
-        <BucketCount>256</BucketCount>
-        <IncludeOutOfRange>1</IncludeOutOfRange>
-        <Approximate>0</Approximate>
-        <HistCounts>185418|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|4529|0|0|0|7550|0|4450|0|0|5300|0|0|7736|0|0|2551|0|7266|0|4929|0|5443|0|6020|0|4866|0|4311|0|4557|0|2917|0|5704|2112|0|3973|3649|0|1331|3541|0|1593|0|3565|2846|1871|0|1604|2862|1685|0|3253|1820|1192|0|195044|2248|2040|1278|0|2049|2154|0|3713|1232|1982|1816|0|1674|1066|1634|1563|1621|1962|2361|1385|1113|500|1157|1114|955|373|46993|946|1065|307|1335|1353|839|4093|991|987|242|58|835|1173|888|417|0|1298|1638|1279|0|1030|948|866|1021|61|721|838|842|52|737|811|1269|29|805|726|33|600|787|868|48|1167|652|44|80|775|1486|31|800|34|997|532|953|108|939|836|266|923|959|897|124|989|1478|67|63|101828|1210|176|1711|50|94|1722|113|1000|973|114|1062|1417|1411|44|1321|1192|36|169|841|1375|292|1478|1544|1544|1154|212|1911|1328|315|1038|85|1281|2007|181|133|1627|1633|171|2299|139168|1201|953|109|1315|1362|284|731|1413|224|126|3102|239|2110702</HistCounts>
-      </HistItem>
-    </Histograms>
-    <Metadata>
-      <MDI key="STATISTICS_COUNT">3026528.000000</MDI>
-      <MDI key="STATISTICS_COVARIANCES">5651.537080301759,5334.334166341644,5153.845499121288</MDI>
-      <MDI key="STATISTICS_EXCLUDEDVALUES"></MDI>
-      <MDI key="STATISTICS_MAXIMUM">255</MDI>
-      <MDI key="STATISTICS_MEAN">215.72052728408</MDI>
-      <MDI key="STATISTICS_MEDIAN">255.000000</MDI>
-      <MDI key="STATISTICS_MINIMUM">0</MDI>
-      <MDI key="STATISTICS_SKIPFACTORX">1</MDI>
-      <MDI key="STATISTICS_SKIPFACTORY">1</MDI>
-      <MDI key="STATISTICS_STDDEV">75.176705702643</MDI>
-    </Metadata>
-  </PAMRasterBand>
-  <PAMRasterBand band="2">
-    <Histograms>
-      <HistItem>
-        <HistMin>-0.5</HistMin>
-        <HistMax>255.5</HistMax>
-        <BucketCount>256</BucketCount>
-        <IncludeOutOfRange>1</IncludeOutOfRange>
-        <Approximate>0</Approximate>
-        <HistCounts>158203|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|3533|0|0|0|5306|0|3696|0|0|3422|0|0|5022|0|0|1749|0|5834|0|3261|0|5060|0|4030|0|5188|0|4127|0|5256|0|1901|0|7865|2113|0|5401|4647|0|3468|5658|0|2218|0|6399|5119|2751|0|3558|4686|2755|0|4747|2575|1883|0|4668|2830|1855|2252|0|2128|1887|0|5173|1638|2366|2132|0|1502|193821|2373|1248|2267|2331|3540|47884|1010|1682|2205|931|1336|1521|695|1892|1326|535|1248|1107|380|3232|293|978|1297|58|299|1307|1177|459|0|1330|3196|1796|0|268|757|1393|669|61|628|1116|0|782|787|50|722|850|70|687|33|1063|1416|56|759|896|1|43|1213|49|2480|31|841|35|1311|980|38|947|23|801|1584|55|875|949|144|1611|97|67|1088|883|125|1263|1663|50|94|102946|113|1689|33|977|1160|132|897|62|1827|1301|35|176|1077|168|2452|525|2237|135|944|225|2373|1415|318|1540|76|2473|165|186|1519|1408|121|1313|289|3056|1702|2143|109|140044|96|1267|112|1330|224|1451|2105|239|2113323</HistCounts>
-      </HistItem>
-    </Histograms>
-    <Metadata>
-      <MDI key="STATISTICS_COUNT">3026528.000000</MDI>
-      <MDI key="STATISTICS_COVARIANCES">5334.334166341644,5110.146071597961,4959.943695880917</MDI>
-      <MDI key="STATISTICS_EXCLUDEDVALUES"></MDI>
-      <MDI key="STATISTICS_MAXIMUM">255</MDI>
-      <MDI key="STATISTICS_MEAN">218.30340475952</MDI>
-      <MDI key="STATISTICS_MEDIAN">255.000000</MDI>
-      <MDI key="STATISTICS_MINIMUM">0</MDI>
-      <MDI key="STATISTICS_SKIPFACTORX">1</MDI>
-      <MDI key="STATISTICS_SKIPFACTORY">1</MDI>
-      <MDI key="STATISTICS_STDDEV">71.485285699911</MDI>
-    </Metadata>
-  </PAMRasterBand>
-  <PAMRasterBand band="3">
-    <Histograms>
-      <HistItem>
-        <HistMin>-0.5</HistMin>
-        <HistMax>255.5</HistMax>
-        <BucketCount>256</BucketCount>
-        <IncludeOutOfRange>1</IncludeOutOfRange>
-        <Approximate>0</Approximate>
-        <HistCounts>195517|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|7482|0|0|0|12466|0|7714|0|0|8131|0|0|10216|0|0|3194|0|9835|0|7283|0|6487|0|5466|0|5468|0|6020|0|4103|0|2598|0|6655|2211|0|5139|4174|0|2536|4414|0|1909|0|3801|3801|1164|0|2179|3325|948|0|3292|1287|637|0|2600|1564|412|1737|0|996|1634|0|1665|1444|1272|420|0|1519|1083|999|285|1166|760|1677|919|1662|280|1261|897|1154|396|1810|1376|532|1503|1665|404|897|1994|32|551|951|58|2|1036|1015|35|0|655|2082|148|0|632|910|748|996|61|0|1478|0|192926|1149|50|1623|1541|70|2152|33|44|1274|1001|48|1654|1894|43|81|843|1455|31|2082|36|890|1225|40|1379|689|109|1962|929|118|1467|805|65|2128|69|64|690|1319|178|2495|50|107|2356|117|1510|31|1179|1382|156|1651|1080|180|1935|36|1039|203|1799|558|1477|1897|102610|1211|210|1977|191|1703|2284|74|1171|1876|180|155|1794|146|2447|2950|96|3165|80|2388|186|2207|2619|112|2349|224|127|142207|240|2115330</HistCounts>
-      </HistItem>
-    </Histograms>
-    <Metadata>
-      <MDI key="STATISTICS_COUNT">3026528.000000</MDI>
-      <MDI key="STATISTICS_COVARIANCES">5153.845499121288,4959.943695880917,5343.378932014619</MDI>
-      <MDI key="STATISTICS_EXCLUDEDVALUES"></MDI>
-      <MDI key="STATISTICS_MAXIMUM">255</MDI>
-      <MDI key="STATISTICS_MEAN">220.18626029562</MDI>
-      <MDI key="STATISTICS_MEDIAN">255.000000</MDI>
-      <MDI key="STATISTICS_MINIMUM">0</MDI>
-      <MDI key="STATISTICS_SKIPFACTORX">1</MDI>
-      <MDI key="STATISTICS_SKIPFACTORY">1</MDI>
-      <MDI key="STATISTICS_STDDEV">73.098419490538</MDI>
-    </Metadata>
-  </PAMRasterBand>
 </PAMDataset>
